@@ -22,10 +22,12 @@ var gpus = {
 }
 
 zmStats();
+cmStats(0);
 
 cron.schedule('*/1 * * * *', function(){
 
    zmStats();
+   cmStats(0);
 
 });
 
