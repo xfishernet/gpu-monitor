@@ -12,6 +12,9 @@ var options = {
 
 var cron = require('node-cron');
 
+
+// for rig 1
+
 var gpus = {
 
  /*0 : '5adbb48ad7311e652f0a05d8',
@@ -21,16 +24,18 @@ var gpus = {
 
 }
 
-var claymoreIds = ['5adc6074d7311e652f0a05dc', '5adc6079d7311e652f0a05dd', '5adc607cd7311e652f0a05de', '5adc607fd7311e652f0a05df']
+// for rig 1
+//var claymoreIds = ['5adc6074d7311e652f0a05dc', '5adc6079d7311e652f0a05dd', '5adc607cd7311e652f0a05de', '5adc607fd7311e652f0a05df']
+// for homer server
+var claymoreIds = ['5adbb05cd7311e652f0a05d7']
 
 
-
-zmStats();
+//zmStats();
 cmStats(claymoreIds);
 
 cron.schedule('*/1 * * * *', function(){
 
-   zmStats();
+  // zmStats();
    cmStats(claymoreIds);
 
 });
