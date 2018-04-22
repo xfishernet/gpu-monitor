@@ -21,13 +21,17 @@ var gpus = {
 
 }
 
+var claymoreIds = ['5adc6074d7311e652f0a05dc', '5adc6079d7311e652f0a05dd', '5adc607cd7311e652f0a05de', '5adc607fd7311e652f0a05df']
+
+
+
 zmStats();
-cmStats(0);
+cmStats(claymoreIds);
 
 cron.schedule('*/1 * * * *', function(){
 
    zmStats();
-   cmStats(0);
+   cmStats(claymoreIds);
 
 });
 
@@ -75,7 +79,7 @@ var client = new jsonrpc({ port: 2222, host: '127.0.0.1'})
 
 }
 
-function cmStats(id) {
+function cmStats(ids) {
 
   var client = new jsonrpc({ port: 3333, host: '127.0.0.1'})
 
@@ -87,16 +91,28 @@ function cmStats(id) {
             // print complete reply
             console.log(reply)
 
-            var parts = reply.result[6].split(";");
+            var parts      = reply.result[6].split(";");
+            var speedParts = reply.result[3].split(";");
 
-            var args = {
-                data: { speed: reply.result[3], fan: parts[1], temp: parts[0] },
-                headers: { "Content-Type": "application/x-www-form-urlencoded" }
-            };
+            for (var i = 0; i < (parts.length/2); i++) {
 
-            rest.put("http://auth.x-fisher.org.ua/gpu/" + id, args, function (data, response) {
-                console.log(data);
-            });
+               var temp   = parts[i*2]
+               var fan    = parts[i*2 + 1];
+               var speed  = speedParts[i];
+
+               var args = {
+                   data: { speed: speed, fan: fan, temp: temp },
+                   headers: { "Content-Type": "application/x-www-form-urlencoded" }
+               };
+
+               rest.put("http://auth.x-fisher.org.ua/gpu/" + ids[i], args, function (data, response) {
+                   console.log(data);
+               });
+
+            }
+
+
+
 
             client.close();
         },
