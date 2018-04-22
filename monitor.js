@@ -58,8 +58,12 @@ var client = new jsonrpc({ port: 2222, host: '127.0.0.1'})
                 headers: { "Content-Type": "application/x-www-form-urlencoded" }
             };
 
-            rest.put("http://auth.x-fisher.org.ua/gpu/" + gpus[reply.result[i].gpu_id], args, function (data, response) {
+            var req = rest.put("http://auth.x-fisher.org.ua/gpu/" + gpus[reply.result[i].gpu_id], args, function (data, response) {
                 console.log(data);
+            });
+
+            req.on('error', function (err) {
+              console.log('request error', err);
             });
 
           }
@@ -105,8 +109,12 @@ function cmStats(ids) {
                    headers: { "Content-Type": "application/x-www-form-urlencoded" }
                };
 
-               rest.put("http://auth.x-fisher.org.ua/gpu/" + ids[i], args, function (data, response) {
+               var req = rest.put("http://auth.x-fisher.org.ua/gpu/" + ids[i], args, function (data, response) {
                    console.log(data);
+               });
+
+               req.on('error', function (err) {
+                 console.log('request error', err);
                });
 
             }
