@@ -17,7 +17,7 @@ var gpus = {
  /*0 : '5adbb48ad7311e652f0a05d8',
  2 : '5adbb491d7311e652f0a05d9',
  3 : '5adbb496d7311e652f0a05da',*/
- 3: '5adbb496d7311e652f0a05da'
+ 4: '5adc534ed7311e652f0a05db'
 
 }
 
