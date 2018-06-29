@@ -27,7 +27,7 @@ var gpus = {
 // for rig 1
 //var claymoreIds = ['5adc6074d7311e652f0a05dc', '5adc6079d7311e652f0a05dd', '5adc607cd7311e652f0a05de', '5adc607fd7311e652f0a05df']
 // for homer server
-var claymoreIds = ['5adbb05cd7311e652f0a05d7']
+var claymoreIds = ['5adbb48ad7311e652f0a05d8', '5adbb491d7311e652f0a05d9', '5adbb496d7311e652f0a05da']
 
 
 //zmStats();
